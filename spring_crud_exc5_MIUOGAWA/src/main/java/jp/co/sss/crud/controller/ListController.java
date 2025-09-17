@@ -33,10 +33,14 @@ public class ListController {
 	 * @return 遷移先のビュー
 	 * @throws ParseException 
 	 */
+	@Autowired
+	SearchAllEmployeesService  SearchAll;
 	@RequestMapping(path = "/list", method = RequestMethod.GET)
 	public String findAll(Model model) {
-
+	
 		List<EmployeeBean> allEmployeeList = null;
+		
+		allEmployeeList = SearchAll.execute();
 		//TODO SearchAllEmployeesService完成後にコメントを外す
 		//		allEmployeeList = searchAllEmployeesService.execute();
 

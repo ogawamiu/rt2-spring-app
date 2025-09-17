@@ -28,7 +28,7 @@ public class LoginService {
 	 * Spring DIによって自動注入されます。
 	 */
 	@Autowired
-	EmployeeRepository emprepository;
+	EmployeeRepository repository;
 
 	/**
 	 * ログイン認証処理を実行します。
@@ -51,16 +51,18 @@ public class LoginService {
 		
 		//ログインの結果を保存できるように、Beanクラスを呼び出しておく
 		LoginResultBean loginResultBean = null;
+		
 		//入力されたユーザーIDとパスワードがDBに登録されているか検索する
-		Employee employee = emprepository.findByEmpIdAndEmpPass(loginForm.getEmpId(), loginForm.getEmpPass());
+		Employee employee = repository.findByEmpIdAndEmpPass(loginForm.getEmpId(), loginForm.getEmpPass());
+
+		if (employee != null) {
 		//検索結果をEntityからBeanに値を渡す(loginUserの中に検索結果が入ってる)
 		EmployeeBean loginUser = BeanManager.copyEntityToBean(employee);
-
-		if (loginUser != null) {
 		//入力されたユーザーIDとパスワードがDB上にある、ログインの結果を保持するloginResultBeanに代入
 			loginResultBean = LoginResultBean.succeedLogin(loginUser);
 		} else {
 		//入力されたユーザーIDとパスワードがDB上にない、エラーメッセージをログインの結果を保持するloginResultBeanに代入
+			
 			loginResultBean = LoginResultBean.failLogin("社員ID、またはパスワードが間違っています。");
 		}
 		return loginResultBean;
