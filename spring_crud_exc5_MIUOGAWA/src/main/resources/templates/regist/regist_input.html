@@ -9,7 +9,14 @@
 	<h3>社員登録入力画面</h3>
 	
 	<div class="update">
+
 		<form th:action="@{/regist/check}" method="post" th:object="${employeeForm}">
+		<!-- エラーメッセージの出力(入力チェック) -->
+		<p>
+			<span th:each="error:${#fields.detailedErrors()}"> 
+			<span th:text="${error.message}" class="error"></span><br/>
+			</span>
+		</p>
 			<div class="form">
 				<div class="label">パスワード：</div>
 				<div class="input required">
