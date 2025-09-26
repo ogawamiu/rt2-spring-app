@@ -17,7 +17,7 @@ private Integer empId;
 
 /** パスワード */
 @NotBlank
-@Pattern(regexp = "^[a-zA-Z0-9 ]{0,16}$")
+@Pattern(regexp = "^[a-zA-Z0-9 ]{0,16}$",message="{Pattern.loginForm.empPass}")
 private String empPass;
 	
 	
