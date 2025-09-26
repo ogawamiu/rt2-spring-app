@@ -46,7 +46,7 @@ public class SearchForEmployeesByEmpIdService {
 		}else {
 			employeeBean = BeanManager.copyEntityToBean(employee);
 
-			return employeeBean;			
+			return employeeBean;
 		}
 
 	}

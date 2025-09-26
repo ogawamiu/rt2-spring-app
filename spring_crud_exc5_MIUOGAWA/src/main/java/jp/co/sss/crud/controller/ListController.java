@@ -96,10 +96,18 @@ public class ListController {
 	 * 社員情報を社員ID検索した結果を出力
 	 */
 	@RequestMapping(path = "/list/empId", method = RequestMethod.GET)
-	public String findByempId(Integer empId, Model model) {
+	public String findByempId(String strempId, Model model) {
 		
-		if (empId == null) {
-			return "redirect:/list";
+		Integer empId;
+		if (strempId == null || strempId.isEmpty()) {
+			empId = null;
+		}else if (strempId.matches("\\d+")) {
+			empId = Integer.valueOf(strempId);
+		}else {
+			empId = 0;
+		}
+			if(empId == null) {
+				return "Redirect:/list";
 		}else {
 			EmployeeBean searchByempId = SearchForEmployeesByEmpIdService.execute(empId);
 			model.addAttribute("employees", searchByempId);
