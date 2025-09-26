@@ -39,9 +39,15 @@ public class SearchForEmployeesByEmpIdService {
 	//TODO ここに記述
 	public EmployeeBean execute(Integer empId) {
 
-		Employee employee = repository.getReferenceById(empId);
-		EmployeeBean employeeBean = BeanManager.copyEntityToBean(employee);
+		EmployeeBean employeeBean = null;
+		Employee employee = repository.findByEmpId(empId);
+		if (employee == null) {
+			return employeeBean;
+		}else {
+			employeeBean = BeanManager.copyEntityToBean(employee);
 
-		return employeeBean;
+			return employeeBean;			
+		}
+
 	}
 }

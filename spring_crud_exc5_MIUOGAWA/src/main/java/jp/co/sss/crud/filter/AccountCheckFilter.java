@@ -19,12 +19,12 @@ public  void doFilter(
 		
 		String requestURL = request.getRequestURI();
 		
-		if(requestURL.indexOf("/html/") != -1|| requestURL.indexOf("/css/") != -1|| requestURL.indexOf("/img/") != -1|| requestURL.indexOf("/js/") != -1) {
+		if(requestURL.indexOf("/html/") != -1|| requestURL.indexOf("/css/") != -1|| requestURL.indexOf("/img/") != -1|| requestURL.indexOf("/js/") != -1){
 			chain.doFilter(request, response);
 			return;
 			}
 		
-		if(requestURL.endsWith("/regist/input") || requestURL.endsWith("/delete/check") ) {
+		if(requestURL.endsWith("/regist/input") || requestURL.endsWith("/delete/check")){
 			
 			HttpSession session = request.getSession();
 			EmployeeBean empId = (EmployeeBean)session.getAttribute("loginUser");
@@ -34,6 +34,8 @@ public  void doFilter(
 			}else {
 				chain.doFilter(request, response);
 			}
+			}else {
+				chain.doFilter(request, response);
 			}
 }
 }

@@ -22,7 +22,7 @@ div.regist_link {
 /* ---- 社員情報一覧テーブル ---- */
 table {
 	background-color: #FFFFFF;
-	border-color: #87CEEB;
+	border-color: rgb(191, 255, 191);
 	border-width: 1px;
 	border-style: solid;
 	border-collapse: collapse;
@@ -32,7 +32,7 @@ table {
 table td, table th {
 	border-width: 1px;
 	border-style: solid;
-	border-color: #87CEEB;
+	border-color: rgb(191, 255, 191);
 }
 
 td.data {
@@ -143,10 +143,10 @@ div.message {
 input[type=submit] {
 	border-width: 1px;
 	border-style: solid;
-	border-color: #808080;
+	border-color: rgb(55, 181, 65);
 	padding: 0px 10px;
 	border-radius: 6px;
-	color: #12526d;
+	color: rgb(55, 181, 65);
 }
 
 /* ---- エラーメッセージ ---- */

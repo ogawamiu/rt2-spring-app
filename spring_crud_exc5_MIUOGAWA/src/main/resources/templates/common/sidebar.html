@@ -12,6 +12,15 @@
 	      <input type="submit" value="検索" />
 	    </form>
 	  </div>
+	  
+	  <div class="title">社員ID検索</div>
+	  <div class="form">
+	    <form th:action="@{/list/empId}" method="get">
+	      <input type="text" name="empId" />
+	      <input type="submit" value="検索" />
+	    </form>
+	  </div>
+	  
 	  <div class="title">部署名検索</div>
 	  <div class="form">
 	    <form th:action="@{/list/deptId}" method="get">
