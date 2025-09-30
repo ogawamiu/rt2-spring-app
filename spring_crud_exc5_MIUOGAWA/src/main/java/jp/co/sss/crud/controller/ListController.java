@@ -98,16 +98,16 @@ public class ListController {
 	@RequestMapping(path = "/list/empId", method = RequestMethod.GET)
 	public String findByempId(String strempId, Model model) {
 		
-		Integer empId;
-		if (strempId == null || strempId.isEmpty()) {
-			empId = null;
-		}else if (strempId.matches("\\d+")) {
-			empId = Integer.valueOf(strempId);
+		Integer empId;//NULLが入るためにIntger型にする。String型とInteger型の箱を用意する。
+		if (strempId == null || strempId.isEmpty()) { //入ってきた値がNULLまたは空文字だった場合
+			empId = null; //tureの場合NULLで値を返す→109行目に行く
+		}else if (strempId.matches("\\d+")) { //falseだった場合、正規表現か判定する
+			empId = Integer.valueOf(strempId); //数値だった場合はvalueOf()を使って、Intger型に変換して代入→109行目
 		}else {
-			empId = 0;
+			empId = 0;//aなどの文字列が入力されたときに０に代入させて検索しに行かせる→112行目に行く
 		}
 			if(empId == null) {
-				return "Redirect:/list";
+				return "Redirect:/list"; //NULLだったら社員一覧を出す
 		}else {
 			EmployeeBean searchByempId = SearchForEmployeesByEmpIdService.execute(empId);
 			model.addAttribute("employees", searchByempId);
